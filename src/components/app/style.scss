@@ -1,0 +1,47 @@
+//  ===== App ================================================================
+//  Base Styles
+//  ==========================================================================
+
+
+// Dependencies
+// ------------------------------
+@import '../../styles/vars.scss';
+
+// ------------------------------
+// Base
+// ------------------------------
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+// ------------------------------
+// App
+// ------------------------------
+#main,
+.app-bg,
+.app {
+  width: 100%;
+  height: 100%;
+}
+
+.app-bg {
+  padding: 32px;
+  background-color: #FBF7ED;
+  @media screen and (max-width: $bp2) {
+    padding: 12px;
+  }
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: solid 8px #32615B;
+  @media screen and (max-width: $bp2) {
+    border-width: 6px;
+  }
+}

@@ -1,0 +1,204 @@
+//  ===== Search ===========================================================
+//  Description
+//  ==========================================================================
+
+
+// Dependencies
+// ------------------------------
+@import '../../styles/vars.scss';
+
+// ------------------------------
+// Container
+// ------------------------------
+.search {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  border-bottom: solid 3px $darkGreen;
+  background-color: $beige;
+  box-shadow: 0 4px 0 rgba($darkGreen, 0.4);
+}
+
+.search-con {
+  position: relative;
+  float: right;
+  margin: 28px 32px;
+  transition: transform 0.3s cubic-bezier(0.065, 0.900, 0.155, 1.150);
+  transform: scale(0.9);
+  &.is-focused {
+    transform: scale(1);
+    .search-border {
+      opacity: 1;
+    }
+    .search-border-top {
+      transform: scaleX(1);
+    }
+    .search-border-left,
+    .search-border-right {
+      transform: scaleY(1);
+    }
+    .search-icon-accent-left {
+      transform: translate(22px, -50%);
+    }
+    .search-icon-accent-right {
+      transform: translate(-22px, -50%);
+    }
+    .search-icon-accent-top {
+      transform: translate(-50%, 22px) rotate(90deg);
+    }
+    .search-icon-accent-bottom {
+      transform: translate(-50%, -22px) rotate(90deg);
+    }
+  }
+  @media screen and (max-width: $bp1) {
+    margin: 20px 24px;
+    &.is-focused {
+      .search-icon-accent-left {
+        transform: translate(16px, -50%);
+      }
+      .search-icon-accent-right {
+        transform: translate(-16px, -50%);
+      }
+      .search-icon-accent-top {
+        transform: translate(-50%, 16px) rotate(90deg);
+      }
+      .search-icon-accent-bottom {
+        transform: translate(-50%, -16px) rotate(90deg);
+      }
+    }
+  }
+  @media screen and (max-width: $bp2) {
+    float: none;
+    margin: 14px;
+  }
+}
+
+// ------------------------------
+// Input
+// ------------------------------
+.search-input {
+  padding: 16px 32px 16px 56px;
+  font-size: 24px;
+  font-family: "rooney-sans", sans-serif;
+  font-weight: 400;
+  color: $darkPurple;
+  background: transparent;
+  cursor: pointer;
+  @media screen and (max-width: $bp1) {
+    padding: 12px 24px 12px 36px;
+    font-size: 18px;
+  }
+}
+
+::-webkit-input-placeholder {
+  color: rgba($darkGreen, 0.3);
+}
+
+// ------------------------------
+// Borders
+// ------------------------------
+.search-border {
+  position: absolute;
+  background-color: $darkGreen;
+  transition: opacity 0.15s ease, transform 0.15s cubic-bezier(0.095, 0.430, 0.070, 1.000);
+}
+
+.search-border-top,
+.search-border-bottom {
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.search-border-top {
+  top: 0;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.search-border-bottom {
+  bottom: 0;
+  opacity: 0.3;
+}
+
+.search-border-left,
+.search-border-right {
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition-delay: 0.15s;
+}
+
+.search-border-left {
+  left: 0;
+}
+
+.search-border-right {
+  right: 0;
+  transform-origin: bottom;
+}
+
+// ------------------------------
+// Icon
+// ------------------------------
+.search-icon {
+  position: absolute;
+  z-index: -1;
+  left: 16px;
+  top: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: solid 2px $darkGreen;
+  transform: rotate(-6deg);
+  opacity: 0.3;
+  @media screen and (max-width: $bp1) {
+    left: 12px;
+    top: 12px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.search-icon-accent {
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  background-color: $darkGreen;
+  border-radius: 1px;
+  transition: transform 0.5s cubic-bezier(0.065, 0.900, 0.155, 1.150);
+}
+
+.search-icon-accent-left,
+.search-icon-accent-right {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-icon-accent-left {
+  left: -4px;
+}
+
+.search-icon-accent-right {
+  right: -4px;
+}
+
+.search-icon-accent-top,
+.search-icon-accent-bottom {
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.search-icon-accent-top {
+  top: 0;
+}
+
+.search-icon-accent-bottom {
+  bottom: 0;
+}

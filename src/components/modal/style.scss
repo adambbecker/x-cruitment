@@ -1,0 +1,22 @@
+//  ===== Modal ===========================================================
+//  Description
+//  ==========================================================================
+
+
+// Dependencies
+// ------------------------------
+@import '../../styles/vars.scss';
+
+// ------------------------------
+// Container
+// ------------------------------
+.modal {
+  position: relative;
+  transform: skewX(3deg);
+  width: 90%;
+  max-width: 848px;
+  height: 75%;
+  margin: 0 auto;
+  border: solid 3px $darkGreen;
+  box-shadow: -4px 8px 0 $darkGreen;
+}

@@ -1,0 +1,5 @@
+{
+  "generator-abb-react-grunt-webpack": {
+    "appPath": "src"
+  }
+}

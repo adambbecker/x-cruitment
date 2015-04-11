@@ -1,0 +1,49 @@
+//  ===== Banner ===========================================================
+//  Description
+//  ==========================================================================
+
+
+// Dependencies
+// ------------------------------
+@import '../../styles/vars.scss';
+
+// ------------------------------
+// Container
+// ------------------------------
+.banner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  transform: skewX(-6deg) translate(-16%, -20%) rotate(-18deg);
+  padding: 8px 0;
+  border: solid 3px #32615B;
+  background-color: #FBF7ED;
+  box-shadow: -6px 3px 0 #32615B;
+  @media screen and (max-width: $bp2) {
+    top: auto;
+    bottom: 0;
+    transform: skewX(12deg) translate(-20%, 20%) rotate(18deg);
+    box-shadow: -3px 6px 0 #32615B;
+  }
+}
+
+.banner-text {
+  padding: 0 32px;
+  font-family: 'Bangers', cursive;
+  font-size: 92px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: -webkit-linear-gradient(#E52F2B, #F6A62F);
+  -webkit-text-stroke: 1px #32615B;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  @media screen and (max-width: $bp1) {
+    font-size: 62px;
+    padding: 0 24px;
+  }
+  @media screen and (max-width: $bp2) {
+    font-size: 42px;
+    padding: 0 18px;
+  }
+}

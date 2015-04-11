@@ -1,0 +1,337 @@
+//  ===== People ===========================================================
+//  Description
+//  ==========================================================================
+
+
+// Dependencies
+// ------------------------------
+@import '../../styles/vars.scss';
+
+// ------------------------------
+// Container
+// ------------------------------
+.people {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 124px 32px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  @media screen and (max-width: $bp1) {
+    padding: 90px 24px 0;
+  }
+  @media screen and (max-width: $bp2) {
+    padding-top: 78px;
+  }
+}
+
+// ------------------------------
+// Person
+// ------------------------------
+.person {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 24px 0;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.065, 0.900, 0.155, 1.150);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 128px;
+    right: 0;
+    border-bottom: solid 2px rgba($darkGreen, 0.3);
+  }
+  &:hover {
+    .badge-circles {
+      transform: rotate(-6deg);
+    }
+    .badge-banner {
+      transform: translate(8px, -22px);
+      box-shadow: -1px 1px 0 $darkPurple,
+                  -2px 2px 0 $darkPurple,
+                  -3px 3px 0 $darkPurple,
+                  -4px 4px 0 $darkPurple,
+                  -5px 5px 0 $darkPurple,
+                  -6px 6px 0 $darkPurple;
+    }
+  }
+  &.is-recruited {
+    cursor: auto;
+  }
+  @media screen and (max-width: $bp1) {
+    padding: 16px 0;
+    &:after {
+      left: 98px;
+    }
+  }
+  @media screen and (max-width: $bp2) {
+    display: block;
+    &:after {
+      left: 0;
+    }
+  }
+}
+
+.person-trans-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+  &.person-trans-enter-active {
+    transition: transform 0.4s cubic-bezier(0.065, 0.900, 0.155, 1.150), opacity 0.4s ease;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.person-trans-leave {
+  opacity: 1;
+  transform: translateX(0);
+  &.person-trans-leave-active {
+    transition: transform 0.4s cubic-bezier(0.095, 0.430, 0.070, 1.000), opacity 0.4s ease;
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.person-avatar {
+  position: relative;
+  width: 104px;
+  height: 104px;
+  margin-right: 24px;
+  border: solid 3px $darkGreen;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: solid 2px #fff;
+    border-radius: 50%;
+  }
+  @media screen and (max-width: $bp1) {
+    width: 80px;
+    height: 80px;
+    margin-right: 18px;
+  }
+  @media screen and (max-width: $bp2) {
+    width: 142px;
+    height: 142px;
+    margin: 0 auto 18px;
+  }
+}
+
+.person-details {
+  flex: 1 1 auto;
+  padding-bottom: 12px;
+  padding-right: 182px;
+  @media screen and (max-width: $bp1) {
+    padding-right: 144px;
+  }
+  @media screen and (max-width: $bp2) {
+    flex: none;
+    width: 100%;
+    padding-right: 0;
+  }
+}
+
+.person-name {
+  margin-bottom: 8px;
+  color: $darkPurple;
+  font-size: 44px;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 1px;
+  transition: transform 0.4s ease;
+  @media screen and (max-width: $bp1) {
+    font-size: 32px;
+  }
+}
+
+.person-location {
+  font-size: 20px;
+  font-family: "rooney-sans", sans-serif;
+  font-weight: 500;
+  color: rgba($darkPurple, 0.8);
+  transition: transform 0.6s ease;
+  @media screen and (max-width: $bp1) {
+    font-size: 16px;
+  }
+}
+
+// ------------------------------
+// Stamp
+// ------------------------------
+.person-stamp {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: rotate(-9deg) translateY(-50%);
+  padding: 12px 18px;
+  border: solid 3px #C30924;
+  border-radius: 6px;
+  font-size: 32px;
+  font-family: 'Bangers', cursive;
+  color: #C30924;
+  opacity: 0.6;
+  @media screen and (max-width: $bp1) {
+    font-size: 24px;
+    padding: 10px 16px;
+  }
+  @media screen and (max-width: $bp2) {
+    top: 104px;
+  }
+}
+
+// ------------------------------
+// Badge
+// ------------------------------
+.person-badge {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 104px;
+  height: 104px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  &:active {
+    .badge-banner {
+      transform: translate(0, -18px);
+      box-shadow: none;
+    }
+  }
+  @media screen and (max-width: $bp1) {
+    width: 80px;
+    height: 80px;
+  }
+  @media screen and (max-width: $bp2) {
+    top: 104px;
+  }
+}
+
+.badge-circles {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: $beige;
+  border: solid 3px $darkPurple;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.badge-circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-color: $darkPurple;
+  border-radius: 50%;
+}
+
+.badge-accent-circle {
+  width: 80%;
+  height: 80%;
+  border-width: 1px;
+  &:first-child {
+    width: 90%;
+    height: 90%;
+  }
+}
+
+.badge-inner-circle {
+  width: 60%;
+  height: 60%;
+  border-width: 2px;
+  background: linear-gradient(to bottom, #9CC4B4 0%, #4D9088 100%);
+}
+
+.badge-accent-star {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 8px;
+  font-size: 14px;
+  color: $darkPurple;
+  background-color: $beige;
+  &:before {
+    content: '\2605';
+  }
+  + .badge-accent-star {
+    top: auto;
+    bottom: 0;
+  }
+  @media screen and (max-width: $bp1) {
+    padding: 0 4px;
+    font-size: 10px;
+  }
+}
+
+.badge-banner {
+  position: absolute;
+  left: -16px;
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px 0;
+  border: solid 3px $darkPurple;
+  font-size: 24px;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 1px;
+  color: $darkPurple;
+  text-align: center;
+  background-color: $beige;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  @media screen and (max-width: $bp1) {
+    left: -10px;
+    right: -10px;
+    font-size: 18px;
+  }
+}
+
+.recruitment-enter {
+  transform: scale(1.6) rotate(0deg) translateY(-50%);
+  opacity: 0;
+  &.recruitment-enter-active {
+    transition: opacity 0.2s ease-out, transform 0.2s cubic-bezier(0.230, 1.170, 0.680, 1.130);
+    transition-delay: 0.6s;
+    opacity: 0.6;
+    transform: rotate(-9deg) translateY(-50%);
+  }
+}
+
+.recruitment-leave {
+  opacity: 1;
+  &.recruitment-leave-active {
+    transition: opacity 0.6s ease-out;
+    opacity: 0;
+    .badge-circles {
+      animation-name: badgeCirclesSpin;
+      animation-duration: 0.6s;
+      animation-fill-mode: both;
+      animation-iteration-count: 3;
+    }
+  }
+}
+
+@keyframes badgeCirclesSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(714deg) scale(1.35);
+  }
+}
