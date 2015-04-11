@@ -161,4 +161,9 @@ module.exports = function (grunt) {
     'webpack-dev-server:start'
   ]);
 
+  // The production server
+	grunt.registerTask('heroku:production', [
+    'prod'
+  ]);
+
 };
