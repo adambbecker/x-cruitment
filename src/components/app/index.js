@@ -17,7 +17,7 @@ var imageURLs = {
   appBg: require('../modal/bg_grunge.jpg'),
   app: {
     halfTone: require('./bg_halftone.svg'),
-    grunge: require('./bg_grunge2.jpg')
+    grunge: require('./bg_grunge.jpg')
   }
 };
 require('abb-reset-css');
