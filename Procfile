@@ -1,1 +1,1 @@
-web: grunt prod
+web: node app.js

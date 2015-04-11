@@ -31,10 +31,6 @@ module.exports = function (grunt) {
           filename: '[name].js',
           chunkFilename: '[chunkhash].js'
         },
-        stats: {
-          colors: false,
-          reasons: false
-        },
 				plugins: [
 					new webpack.DefinePlugin({
 						'process.env': {
@@ -47,18 +43,6 @@ module.exports = function (grunt) {
           new webpack.optimize.OccurenceOrderPlugin(),
           new webpack.optimize.AggressiveMergingPlugin()
 				]
-			},
-			'build-dev': {
-				devtool: 'sourcemap',
-        debug: true,
-        stats: {
-          colors: true,
-          reasons: true
-        },
-        plugins: [
-          new webpack.HotModuleReplacementPlugin(),
-          new webpack.NoErrorsPlugin()
-        ]
 			}
 		},
 
@@ -79,37 +63,7 @@ module.exports = function (grunt) {
             publicPath: '<%= pkg.dist %>/',
             filename: '[name].js',
             chunkFilename: '[chunkhash].js'
-          },
-          stats: {
-            colors: true,
-            reasons: true
           }
-				}
-			}
-		},
-
-    connect: {
-      options: {
-        port: process.env.PORT || 80
-      },
-      dist: {
-        options: {
-          keepalive: true,
-          middleware: function (connect) {
-            return [
-              mountFolder(connect, pkgConfig.dist)
-            ];
-          }
-        }
-      }
-    },
-
-    watch: {
-			app: {
-				files: ['<%= pkg.src %>/**/*'],
-				tasks: ['webpack:build-dev'],
-				options: {
-					spawn: false,
 				}
 			}
 		},
@@ -139,21 +93,11 @@ module.exports = function (grunt) {
 
   });
 
-  // Build and watch cycle (another option for development)
-	// Advantage: No server required, can run app from filesystem
-	// Disadvantage: Requests are not blocked until bundle is available,
-	//               can serve an old app on too fast refresh
-	grunt.registerTask('dev', [
-    'webpack:build-dev',
-    'watch:app'
-  ]);
-
 	// Production build
 	grunt.registerTask('prod', [
     'clean:dist',
     'copy:dist',
-    'webpack:build',
-    'connect:dist'
+    'webpack:build'
   ]);
 
   // The development server (the recommended option for development)
@@ -161,8 +105,9 @@ module.exports = function (grunt) {
     'webpack-dev-server:start'
   ]);
 
-  // The production server
-	grunt.registerTask('heroku:production', [
+  // Heroku
+  // hook for https://github.com/mbuchetics/heroku-buildpack-nodejs-grunt
+	grunt.registerTask('heroku', [
     'prod'
   ]);
 
