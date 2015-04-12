@@ -12,13 +12,6 @@ module.exports = {
     main: './' + pkgConfig.src + '/main.js'
   },
 
-  // output: {
-  //   path: path.join(__dirname, pkgConfig.dist),
-  //   publicPath: pkgConfig.dist + '/',
-  //   filename: '[name].js',
-  //   chunkFilename: '[chunkhash].js'
-  // },
-
   cache: true,
 
   stats: {

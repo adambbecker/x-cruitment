@@ -1,10 +1,6 @@
 'use strict';
 var path = require('path');
 
-var mountFolder = function (connect, dir) {
-  return connect.static(require('path').resolve(dir));
-};
-
 module.exports = function (grunt) {
 
   // load all grunt tasks
